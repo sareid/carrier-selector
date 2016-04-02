@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require jquery.fittext
 //= require jquery.easing.min
+//= require bootstrap
 //= require Chart
 //= require wow.min
 //= require creative
