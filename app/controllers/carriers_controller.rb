@@ -4,7 +4,9 @@ class CarriersController < ApplicationController
     @carriers = Carrier.all
   end
 
-
+  def show
+    @carrier = Carrier.find
+  end
 
 
 end
