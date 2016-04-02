@@ -14,10 +14,10 @@
 //= require jquery_ujs
 //= require jquery.fittext
 //= require jquery.easing.min
-//= require bootstrap
 //= require Chart
 //= require wow.min
 //= require creative
 //= require cbpAnimatedHeader
+//= require bootstrap
 //= require_tree .
 
