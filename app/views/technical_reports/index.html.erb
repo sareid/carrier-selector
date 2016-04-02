@@ -1,0 +1,66 @@
+<header class="carriers">
+  <div class="header-content carriers">
+    <div class="header-content-inner carrieres">
+      <br><br><br>
+      <h1 style="font-size: 65px;">Technical Write-up</h1>
+      <hr>
+      <br>
+      <p style="font-size: 22px;">This page provides a technical write-up of the hypotheses, methodology and analysis undertaken in this data excercise. It will also highlight limitations to the approach, as well as avenues for further exploration.</p>
+      <p style="font-size: 22px;">Where helpful, it will link to charts and tables rendered elsewhere in the Webapp.</p>
+      <p>The source code for this project is available on <a href="https://github.com/sareid/carrier-selector" target="_blank"><i class="fa fa-4x fa-github" style="color: white"></i></a></p>
+      <br><br>
+      </div>
+  </div>
+</header>
+<section class="bg-primary" id="start">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading">Hypothesis</h2>
+            <hr class="light">
+            <p class="text-faded">Based on the dataset provided, it would appear as if CKM Advisors should consider Delta Air Lines as its primary carrier. This reflects both the high number of flights operated by Delta Airlines, its service to 36 metropolitan areas, and the comparatively low frequency of delayed and cancelled flights. Specific figures for this can be seen in the comparison below, as well as on the <%= link_to "the more in depth carrier comparison pages", carriers_path %></p>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <%= render "carriers/comparison" %>
+        </div>
+      </div>
+     </div>
+  </section>
+  <section id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+          <h2 class="section-heading text-center">Methodology</h2>
+          <hr class="primary">
+          <p>This data excercsise was completed using a Ruby on Rails webapp, that used the ActiveRecord pattern of object relational mapping to query a Postgres database. On the front-end, visualizations and design were achieved through ChartJS, jQuery and Bootstrap.</p>
+          <p>The original CSV file with the dataset was imported into a this database via pgAdmin3. At this point the number of entries in the database produced performance issues when running queries via the ActiveRecord pattern. Under the assumption that the analysis would be best focused on flights to and from the New York Metropolitan Area (the likely trave routes of CKM Advisors employees), the database was cleared of all entries save those with a 'DestCityMarket' or 'OriginCityMarket' field with a value of "New York, NY (Metropolitan Area)". This reduced the number of entries from 1,491,146 to 167,716, eliminating most database performance issues.</p>
+          <p>To further help with querying issues, a separate Carrier model was built in rails, with properties that were populated by queries to the main database. These properties would include important figures for analyis, such as total number of flights, number of delayed flights, number of cancelled flights, and mean time of delays.</p>
+          <p>As CKM Advisors would presumably want a carrier with many flights to many locations, methods were written to query the database for both the number of flights operated by a certain carrier, and the metropolitan areas served by that carrier. After visualizing the result (as seen on the <%= link_to "summary page", root_path %>), it was clear that many carriers would not be worth analyzing. The reasons for this were as follows:</p>
+          <ul>
+            <li>Frontier Airlines, Hawaiian Airlines, Mesa Airlines, SkyWest Airlines, and Alaska Airlines only flew between New York and one other metropolitan area. Additionally (and in part because of this), they only provided a small percentage of the total flights of the other carriers.</li>
+            <li>Virgin America flew to more metropolitan areas than the carriers mentioned above, but had the fewest total number of flights</li>
+            <li>US Airways and Southwest Airlines had more flights and serviced more metropolitan areas than the carriers mentioned above, but still had far fewer flights and destinations in comparison to the remaining five to be a credible candidate for CKM's primary carrier</li>
+          </ul>
+          <p>For the remaining five carriers, comparisons were made using the information on delays and cancellations. The analysis focused on indicators deemed to be witin the carrier's control - eg: entries in the 'CarrierDelay' field. It was assumed that delays to weather, airport security, and National Air System factors applied equally to all carriers. Delays from late aircraft were also ignored, because it was impossible to determine whether this delay was the carrier's fault or not.<p>
+          <p>Pie charts were rendered for each carrier showing the breakdown of on-time, delayed, and cancelled flights, alongside bar charts visualizing the mean time for delays and time on the ground during cancellations. To account for the different total number of flights, the rate of delayed and cancelled flights per 1000 flights were calculated, as well as the total amount of time lost to delay per 1000 flights. Based on these statistics, Delta Air Lines was deemed to be the carrier that CKM Advisors should use as its primary carrier.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-primary" id="start">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-10 col-lg-offset-1 ">
+            <h2 class="section-heading text-center">Limitations and future research</h2>
+            <hr class="light">
+            <p>The methodology used in this analysis has several limitations. These include:</p>
+            <ul>
+              <li>Price not taken into account: This would be a critical factor for any company looking to choose a primary carrier. It was not immediately apparent how the prices for these specific flights could be accounted for. Perhaps a process of scraping online prices along key routes to monitor mean prices over a period of time could provide some insights.</li>
+              <li>Populations served: This analysis included the number of metropolitan areas served by each carrier as a factor in determining its viability as a primary carrier. It did not account for the populations of each metropolitan area - and it is possible that a carrier with a smaller number of metropolitan areas could in fact be serving a much larger population. A CityMarket model including Census Bureau population stats was begun, but was not implemented due to time constraints.</li>
+              <li>Daily variations: There may be days of the week that CKM Advisors employees are more likely to travel (e.g. Monday and Friday). With the data available delay and cancellation information could have been calculated on a daily basis to see if any airline was markedly better during these times. This was not integrated due to time constraints.</li>
+            </ul>
+          </div>
+      </div>
+  </section>

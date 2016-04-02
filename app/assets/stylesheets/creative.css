@@ -190,10 +190,6 @@ header {
     -o-background-size: cover;
 }
 
-header .carriers {
-    background-image: image-url("header2.jpg");
-}
-
 header .header-content {
     position: relative;
     width: 100%;
@@ -217,6 +213,10 @@ header .header-content .header-content-inner p {
     font-size: 16px;
     font-weight: 300;
     color: rgba(255,255,255,.7);
+}
+
+header .carriers {
+    background-image: image-url("header2.jpg");
 }
 
 @media(min-width:768px) {
