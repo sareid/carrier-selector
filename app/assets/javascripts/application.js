@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.fittext
-//= require jquery.easing.min
 //= require Chart
 //= require wow.min
 //= require creative
