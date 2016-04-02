@@ -1,2 +1,96 @@
-<h1>Hello again!</h1>
-<%= @flights.length %>
+<body id="page-top">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "Home", root_path, class: "navbar-brand page-scroll"%>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="page-scroll" href="#about">About</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#services">Services</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#portfolio">Portfolio</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header>
+    <div class="header-content">
+      <div class="header-content-inner">
+        <h1 style="font-size: 55px;">Choosing a primary carrier through data analysis</h1>
+        <hr>
+        <p style="font-size: 22px;">CKM Advisors requested advice in choosing a primary airline carrier given a specific set of data. This site presents an analysis of that data and a recommendation of which airline they should choose.</p>
+      </div>
+      <a href="#start" class="btn btn-primary btn-xl page-scroll">Get started</a>
+    </div>
+  </header>
+  <section class="bg-primary" id="start">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+              <h2 class="section-heading">The Data</h2>
+              <hr class="light">
+              <p class="text-faded">The dataset examined consisted of 1,491,146 individual flights, across 14 carriers.</p>
+
+          </div>
+      </div>
+     </div>
+  </section>
+  <section>
+    <div class="container" id="step1">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2 class="section-heading">Step 1: Selecting the relevant data</h2>
+              <hr class="primary">
+              <p></p>
+          </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x  fa-apple text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+            <h3>New York is king</h3>
+            <p class="text-muted">The offies of CKM Advisors are located in Manhattan. Given this, it makes sense to only examine those flights with an origin or destination of the NYC Metropolitan area.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-expand text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+            <h3>Bigger is better</h3>
+            <p class="text-muted">For an airline to be useful as a primary carrier, it must have routine service to a wide variety of city markets in the USA.</p>
+            <p class="text-muted">Eight of the fourteen carriers examined can be qualified as regional carriers providing service to a limited number of areas.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-bolt text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+            <h3>Ignore the uncontrollable</h3>
+            <p class="text-muted">Flights can be delayed or cancelled because of factors outside the control of the carriers. These factors include bad weather, airport security, and </p>
+
+            <p class="text-muted">For this analysis, it can be assumed that these factors affect all carriers equally and, as such, can be ignored.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-calendar text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+            <h3>Short timeframe</h3>
+            <p class="text-muted">Flights can be delayed or cancelled because of factors outside the control of the carriers. These factors include bad weather, airport security, and </p>
+
+            <p class="text-muted">For this analysis, it can be assumed that these factors affect all carriers equally and, as such, can be ignored.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+
