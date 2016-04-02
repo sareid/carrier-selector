@@ -3,7 +3,7 @@
   <div class="col-lg-4">
       <% @carriers.each do |carrier| %>
         <% if carrier.analyzed %>
-          <h4><%= link_to carrier.name, carrier %></h4>
+          <h4 style="color: white"><%= link_to carrier.name, carrier %></h4>
         <% end %>
       <% end %>
   </div>
