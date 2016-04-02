@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require Chart
 //= require wow.min
 //= require creative
 //= require cbpAnimatedHeader
-//= require bootstrap
 //= require_tree .
 
