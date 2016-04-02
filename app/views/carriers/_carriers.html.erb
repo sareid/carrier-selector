@@ -1,9 +1,9 @@
-<div class="row text-center" style="color: #fff;">
+<div class="row text-center">
   <div class="col-lg-4"></div>
   <div class="col-lg-4 carriers-list">
       <% @carriers.each do |carrier| %>
         <% if carrier.analyzed %>
-          <h4 style="color: white;"><%= link_to carrier.name, carrier %></h4>
+          <h4><%= link_to carrier.name, carrier %></h4>
         <% end %>
       <% end %>
   </div>
