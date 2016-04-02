@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+        <h2 class="section-heading">Quick comparison</h2>
+        <hr class="primary">
+      </div>
+      <div class="col-lg-12">
+        <table class="table">
+          <tr class="text-center">
+            <th>Name</th>
+            <th>Flights</th>
+            <th>Cancelled flight rate</th>
+            <th>Delayed flight rate</th>
+            <th>Mean delay time</th>
+            <th>Delay per 1000 flights</th>
+          </tr>
+          <% @carriers.each do |carrier| %>
+            <% if (carrier.analyzed == true) %>
+              <tr>
+                <td><%= carrier.name %></td>
+                <td><%= carrier.num_flights %></td>
+                <td><%= ((carrier.num_cancelled_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
+                <td><%= ((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
+                <td><%= carrier.mean_delay_time %> minutes</td>
+                <td><%= (((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) * carrier.mean_delay_time.to_f).round(2) %> minutes</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

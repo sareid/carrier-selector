@@ -1,0 +1,12 @@
+<div class="row text-center">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+      <% @carriers.each do |carrier| %>
+        <% if carrier.analyzed %>
+          <h4><%= link_to carrier.name, carrier %></h4>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+

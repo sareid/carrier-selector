@@ -1,25 +1,4 @@
 
-<body id="page-top">
-  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <%= link_to "Home", root_path, class: "navbar-brand page-scroll"%>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a class="page-scroll" href="#about">Analysis by Carrier</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#services">Technical Report</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#portfolio">Further Steps</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <header>
     <div class="header-content">
       <div class="header-content-inner">
@@ -101,7 +80,7 @@
     </div>
     <br><br><br><br>
 
-    <div class="container" id="step2">
+    <div class="container" id="step3">
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8 text-center">
@@ -113,7 +92,7 @@
       </div>
       <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-4 text-center">
+        <div class="col-lg-4 text-right">
           <h3>Number of flights per carrier</h3>
           <p>Examining the total number of flights per carrier reveals that 7 of the 14 carriers undertake the overwhelming majority of flight to and from the NYC Metropolitan Area.</p>
           <p>This pie chart demonstrates the breakdown of total flights per carrier. With this in mind, none of the following carriers appear to be a good choice for CKM Advisors: SkyWest Airlines Inc., Mesa Airlines Inc., Hawaiian Airlines Inc., Frontier Airlines Inc., Alaska Airlines Inc., AirTran Airways Corporation, and Virgin America.
@@ -123,6 +102,48 @@
         <div class="col-lg-7 text-center">
           <h3>167,716 flights</h3>
           <%= pie_chart @total_flight_data, @total_flight_options%>
+        </div>
+      </div>
+      <br><br><br>
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4 text-center">
+          <%= chartjs_bar_chart @number_of_destinations %>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6 text-left">
+          <h3>Number of city markets served per carrier</h3>
+          <p>In addition to the number of flights per carrier, it was also important to know the number of city markets being serviced by each carrier. In choosing a primary carrier, CKM will likely want to ensure a broad array of possible destinations. This bar chart show the number of city markets served by each carrier. </p>
+          <p>When combined with the fact that they also significantly fewer flights than the remaining carriers, Southest Airlines Co. and US Airways Inc. were also excluded from analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-primary" id="step4">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading">Step 4: Comparing the remaining carriers</h2>
+            <hr class="light">
+            <p class="text-faded">At this point, only five carriers remain as a viable primary carrier for CKM Advisors. Insights on each carrier can be reached by clicking on its name</p>
+          </div>
+      </div>
+     </div>
+     <%= render "carriers/carriers" %>
+  </section>
+  <section>
+    <%= render "carriers/comparison" %>
+  </section>
+  <section class="bg-primary" id="recommendation">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2 class="section-heading">Recommendation</h2>
+          <i class="fa fa-4x  fa-paper-plane" style="visibility: visible; animation-name: bounceIn;"></i>
+          <h3>Delta Air Lines Inc.</h3>
+          <p class="text-faded">Based on this analysis, it would appear that CKM Advisors should consider Delta Air Lines as its primary carrier. While Delta Air Lines has the second highest mean delay time, it has the lowest rate of delayed flights. Consquently, it has the lowest overall delay time per 1000 flights (2069 minutes) by a clear margin.</p>
+          <p class="text-faded">Additionally, Delta Air Lines has the second lowest rate of cancelled flights. The carrier with the lowest cancellation rate, JetBlue Airways (1.01 per 1000), has the highest delayed flight rate (113.81 per 1000), making it more prone to overall  delays.</p>
+          <p class="text-faded">Concerns could be raised by the fact that Delta Airlines has the lowest total number of flights of the carriers examined but, at 29,170, that figure is still over 90% of the leader in that regard, American Airlines (29,170 flights). Furthermore, Delta Airlines serves 36 metropolitan areas, the median of the carriers examined.</p>
         </div>
       </div>
     </div>
@@ -138,11 +159,11 @@
         <h4 class="modal-title" id="myModalLabel">New York is king</h4>
       </div>
       <div class="modal-body">
-        <p>It was assumed that flights to and from the NYC Metropolitan Area should be the focus of examination, as it is reasonable that the overwhelming number of flights by employees of CKM Advisors will be to a particular location and then back to New York.
+        <p>This analysis only looked at flights to and from the NYC Metropolitan Area. This is because it is reasonable to assume that the overwhelming number of flights by employees of CKM Advisors will be to and from their home base in New York.
         </p>
-        <p>To select these flights from the dataset, the OriginCityMarket and DestCityMarket fields were queried to find flights where the value was the NYC Metropolitan Area. These fields were used to reduce the number of queries that would have needed to be done to account for the variety of airports serving New York.</p>
+        <p>To select these flights from the dataset, the OriginCityMarket and DestCityMarket fields were examined to find flights where the value was the NYC Metropolitan Area.</p>
         <br>
-        <p>This analysis is unable to account for delays that might occur on subsequent legs of a multi-leg journey. It is safe to assume that the majority of travel undertaken by CKM Advisors in the USA will be non-stop trips.</p>
+        <p>This analysis is unable to account for delays that might occur on the subsequent parts of multi-leg journeys. It is safe to assume that the majority of travel undertaken by CKM Advisors in the USA will be non-stop trips.</p>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402055915) do
+ActiveRecord::Schema.define(version: 20160402111139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 20160402055915) do
     t.float    "mean_ground_time_cancelled_flights"
     t.integer  "num_delayed_flights"
     t.float    "mean_delay_time"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
     t.string   "colour"
+    t.boolean  "analyzed",                           default: false
   end
 
   create_table "city_markets", force: :cascade do |t|
@@ -69,6 +70,11 @@ ActiveRecord::Schema.define(version: 20160402055915) do
     t.integer  "first_dep_time"
     t.integer  "total_add_g_time"
     t.integer  "longest_add_g_time"
+  end
+
+  create_table "technical_reports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

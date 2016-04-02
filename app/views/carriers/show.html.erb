@@ -1,0 +1,31 @@
+<section class="bg-primary" id="about">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+              <h2 class="section-heading"><%= @carrier.name %></h2>
+              <hr class="light">
+
+              <p class="text-faded">Total number of flights: <%= @carrier.num_flights %> </p>
+              <p class="text-faded">Number of cancelled flights: <%= @carrier.num_cancelled_flights %> | Cancellation rate: <%= ((@carrier.num_cancelled_flights.to_f / @carrier.num_flights.to_f) * 1000).round(2) %> times per 1000 flights</p>
+              <p class="text-faded">Number of delayed flights: <%= @carrier.num_delayed_flights %> | Delayed rate: <%= ((@carrier.num_delayed_flights.to_f / @carrier.num_flights.to_f) * 1000).round(2) %> times per 1000 flights</p>
+              <p class="text-faded">Number of metropolitan areas served: <%= @metros.length %></p>
+          </div>
+      </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5 text-center">
+        <h3>Number of on-time, delayed, and cancelled flights</h3>
+        <%= chartjs_pie_chart @flight_breakdown_data %>
+      </div>
+      <div class="col-lg-5 text-center">
+        <h3>Mean times of delays and cancellations</h3>
+        <%= chartjs_bar_chart @flight_delay_data %>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</section>

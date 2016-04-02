@@ -95,4 +95,26 @@ class Flight < ActiveRecord::Base
     options
   end
 
+  def self.number_of_destinations_data
+    data = {
+      labels: [],
+      datasets: [{
+          label: "Number of destinations served by each carrier",
+          fillColor: "rgba(240,95,64,0.5)",
+          strokeColor: "rgba(240,95,64,0.8)",
+          highlightFill: "rgba(240,95,64,0.75)",
+          highlightStroke: "rgba(240,95,64,1)",
+          data: []
+        }]
+      }
+    Carrier.all.each do |carrier|
+      data[:labels] << carrier.name
+      total = 0
+      markets = Flight.show_city_markets(carrier.name).length
+      total += markets
+      data[:datasets][0][:data] << total
+    end
+    data
+  end
+
 end

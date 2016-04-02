@@ -8,7 +8,25 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="page-top">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "Home", root_path, class: "navbar-brand page-scroll"%>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to "Carrier Comparison", carriers_path %>
+
+          </li>
+          <li>
+            <%= link_to "Technical Report", technical_reports_path %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 <%= yield %>
 

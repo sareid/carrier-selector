@@ -55,6 +55,10 @@ p {
     background-color: #f05f40;
 }
 
+.bg-primary a {
+    color: #fff;
+}
+
 .bg-dark {
     color: #fff;
     background-color: #222;
@@ -184,6 +188,10 @@ header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+header .carriers {
+    background-image: image-url("header2.jpg");
 }
 
 header .header-content {
