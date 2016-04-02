@@ -491,7 +491,7 @@ body {
   font-size: 4em;
 }
 
-.white-links a:link{ color:#fff; }
-.white-links a:visited{ color:#fff; }
-.white-links a:hover{ color:#fff; }
-.white-links a:active{ color:#fff}
+#white-links a:link{ color:#fff; }
+#white-links a:visited{ color:#fff; }
+#white-links a:hover{ color:#fff; }
+#white-links a:active{ color:#fff}
