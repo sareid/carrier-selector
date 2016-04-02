@@ -10,11 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require jquery.fittext
+//= require jquery.easing.min
 //= require Chart
 //= require wow.min
 //= require creative
 //= require cbpAnimatedHeader
+//= require bootstrap
 //= require_tree .
 
