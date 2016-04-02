@@ -1,5 +1,6 @@
+
 <body id="page-top">
-  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix-top">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
     <div class="container-fluid">
       <div class="navbar-header">
         <%= link_to "Home", root_path, class: "navbar-brand page-scroll"%>
@@ -7,16 +8,13 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a class="page-scroll" href="#about">About</a>
+            <a class="page-scroll" href="#about">Analysis by Carrier</a>
           </li>
           <li>
-            <a class="page-scroll" href="#services">Services</a>
+            <a class="page-scroll" href="#services">Recommendations</a>
           </li>
           <li>
-            <a class="page-scroll" href="#portfolio">Portfolio</a>
-          </li>
-          <li>
-            <a class="page-scroll" href="#contact">Contact</a>
+            <a class="page-scroll" href="#portfolio">Further Steps</a>
           </li>
         </ul>
       </div>
@@ -25,11 +23,12 @@
   <header>
     <div class="header-content">
       <div class="header-content-inner">
-        <h1 style="font-size: 55px;">Choosing a primary carrier through data analysis</h1>
+        <br><br><br>
+        <h1 style="font-size: 65px;">Choosing a primary carrier through data analysis</h1>
         <hr>
-        <p style="font-size: 22px;">CKM Advisors requested advice in choosing a primary airline carrier given a specific set of data. This site presents an analysis of that data and a recommendation of which airline they should choose.</p>
-      </div>
-      <a href="#start" class="btn btn-primary btn-xl page-scroll">Get started</a>
+        <p style="font-size: 22px;">CKM Advisors requested advice in choosing a primary airline carrier, based on a sample set of on-time performance data. This site presents an analysis of that data and a recommendation of which airline they should choose.</p>
+        <p style="font-size: 22px;">Scroll down to get started, or skip to the analysis of specific carriers, final recommendations, and further steps via the navbar above.</p>
+        </div>
     </div>
   </header>
   <section class="bg-primary" id="start">
@@ -38,7 +37,7 @@
           <div class="col-lg-8 col-lg-offset-2 text-center">
               <h2 class="section-heading">The Data</h2>
               <hr class="light">
-              <p class="text-faded">The dataset examined consisted of 1,491,146 individual flights, across 14 carriers.</p>
+              <p class="text-faded">CKM Advisors provided a dataset containing information on flights over a three month period in 2012. </p>
 
           </div>
       </div>
@@ -61,25 +60,31 @@
             <i class="fa fa-4x  fa-apple text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
             <h3>New York is king</h3>
             <p class="text-muted">The offies of CKM Advisors are located in Manhattan. Given this, it makes sense to only examine those flights with an origin or destination of the NYC Metropolitan area.</p>
+            <br>
+            <p class="text-muted">Applying this criteria, roughly 89% of the flights in the dataset can be disregarded. This reduces the number of flights to consider to <%= @flights.length %>.</p>
+            <br>
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#nycmodal">
+              Learn more
+            </button>
+            <br>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box">
-            <i class="fa fa-4x fa-expand text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
-            <h3>Bigger is better</h3>
-            <p class="text-muted">For an airline to be useful as a primary carrier, it must have routine service to a wide variety of city markets in the USA.</p>
-            <p class="text-muted">Eight of the fourteen carriers examined can be qualified as regional carriers providing service to a limited number of areas.</p>
-          </div>
-        </div>
+
         <div class="col-lg-4 col-md-6 text-center">
           <div class="service-box">
             <i class="fa fa-4x fa-bolt text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
             <h3>Ignore the uncontrollable</h3>
-            <p class="text-muted">Flights can be delayed or cancelled because of factors outside the control of the carriers. These factors include bad weather, airport security, and </p>
-
+            <p class="text-muted">Flights are often delayed or cancelled because of factors outside the control of the carriers. These factors are tracked in the dataset, and include bad weather, airport security, and National Air System considerations.</p>
+            <br>
             <p class="text-muted">For this analysis, it can be assumed that these factors affect all carriers equally and, as such, can be ignored.</p>
+            <br>
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#control">
+              Learn more
+            </button>
+            <br>
           </div>
         </div>
+
         <div class="col-lg-4 col-md-6 text-center">
           <div class="service-box">
             <i class="fa fa-4x fa-calendar text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
@@ -90,7 +95,117 @@
           </div>
       </div>
     </div>
+    <br><br><br><br>
+
+    <div class="container" id="step2">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 text-center">
+            <h2 class="section-heading">Step 2: Narrowing down the carriers</h2>
+            <hr class="primary">
+            <p>An examination of the dataset reveals large variations in the number of flights conducted by each carrier, as well as in the number of city markets that they service. In choosing a primary carrier, it can be assumed that a higher number of flights and a greater number of destinations are both favourable factors.</p>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-3 text-right">
+          <h3>Number of flights per carrier</h3>
+          <p>Examining the total number of flights per carrier reveals that 7 of the 14 carriers undertake the overwhelming majority of flight to and from the NYC Metropolitan Area.</p>
+          <br>
+          <p>This pie chart demonstrates the breakdown of total flights per carrier.</p>
+        </div>
+        <div class="col-lg-7 text-center">
+          <h3>167,716 flights</h3>
+          <%= pie_chart @total_flight_data, @total_flight_options%>
+        </div>
+      </div>
+    </div>
   </section>
 </body>
 
+<!-- Modal -->
+<div class="modal fade" id="nycmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New York is king</h4>
+      </div>
+      <div class="modal-body">
+        <p>It was assumed that flights to and from the NYC Metropolitan Area should be the focus of examination, as one can assume the overwhelming number of flights by employees of CKM Advisors will be to a particular location and then back to New York.
+        </p>
+        <p>To select these flights from the dataset, the OriginCityMarket and DestCityMarket fields were queried to find flights where the value was the NYC Metropolitan Area. These fields were used to reduce the number of queries that would have needed to be done to account for the variety of airports serving New York.</p>
+        <br>
+        <p>This analysis is unable to account for delays that might occur on subsequent legs of a multi-leg journey. It is safe to assume that the majority of travel undertaken by CKM Advisors in the USA will be non-stop trips.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="modal fade" id="larger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Bigger is better</h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+        <table class="table table-striped">
+          <tr>
+            <td>Carrier</td>
+            <td>Number of flights</td>
+            <td>City markets served</td>
+            <td>Population served</td>
+          </tr>
+        </table>
+        <p>City market populations taken from <a href="https://www.census.gov/population/metro/data/" target="_blank">United States Census Bureau 2015 estimates.</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="control" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ignore the uncontrollable</h4>
+      </div>
+      <div class="modal-body">
+        <p>The following fields were deemed to be entirely beyond the control of the carriers, and therefore not pertinent to this analysis:</p>
+        <ul>
+          <li>Delays from the National Air System (NASDelay)</li>
+          <li>Delays from airport security issues (SecurityDelay)</li>
+        </ul>
+        <p>Along the same lines, cancelled flights were filtered to exclude from consideration those with the following  codes:</p>
+        <ul>
+          <li>Weather</li>
+          <li>National Air System</li>
+        </ul>
+        <p>Additionally, the LateAircraftDelay field was dropped as well. This delay indicates that the plane was delayed because of delays in its previous flight. The dataset does not keep track of the reason for this delay, and as such it is impossible to determine whether it was the fault of the carrier or not.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="service-box">
+            <i class="fa fa-4x fa-expand text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+            <h3>Bigger is better</h3>
+            <p class="text-muted">For an airline to be useful as a primary carrier, it must have routine service to a wide variety of city markets in the USA.</p>
+            <br>
+            <p class="text-muted">We can eliminate 8 of the 14 carriers under this examined can be qualified as regional carriers providing service to a limited number of areas.</p>
+            <br>
+            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#larger">
+              Learn more
+            </button>
+            <br>
+          </div>
+
+        </div>

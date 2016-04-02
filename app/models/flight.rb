@@ -24,15 +24,15 @@ class Flight < ActiveRecord::Base
     properties
   end
 
-  def self.flights_per_carrier_data
+  # def self.flights_per_carrier_data
 
-    data = {}
+  #   data = {}
 
-    Carrier.all.map do |carrier|
+  #   Carrier.all.map do |carrier|
 
-    end
+  #   end
 
-  end
+  # end
 
   def self.show_city_markets(carrier_name)
     markets = Flight.where(carrier: carrier_name).pluck(:dest_city_market, :origin_city_market).uniq
@@ -73,6 +73,26 @@ class Flight < ActiveRecord::Base
     array.inject(0) { |sum, x| sum += x } / array.size.to_f
   end
 
+  def self.flights_per_carrier_chart_data
+    data = []
+    Carrier.all.each do |carrier|
+      data << {
+        value: carrier.num_flights,
+        color: carrier.colour,
+        highlight: carrier.colour,
+        label: carrier.name
+      }
+    end
+    data
+  end
 
+  def self.flights_per_carrier_chart_options
+    options = {
+      animationEasing: "easeInCubic",
+      width: 350,
+      height: 350
+    }
+    options
+  end
 
 end
