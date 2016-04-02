@@ -11,8 +11,6 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require jquery.fittext
-//= require jquery.easing.min
 //= require bootstrap
 //= require Chart
 //= require wow.min
