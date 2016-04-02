@@ -17,5 +17,3 @@
 //= require excanvas
 //= require_tree .
 
-
-var

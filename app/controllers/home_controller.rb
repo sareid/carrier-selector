@@ -3,8 +3,7 @@ class HomeController < ApplicationController
   def index
     @flights = Flight.pluck(:id)
     @carriers = Carrier.all
-
-
+    @total_number_flights =
   end
 
 end

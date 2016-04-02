@@ -24,6 +24,16 @@ class Flight < ActiveRecord::Base
     properties
   end
 
+  def self.flights_per_carrier_data
+
+    data = {}
+
+    Carrier.all.map do |carrier|
+
+    end
+
+  end
+
   def self.show_city_markets(carrier_name)
     markets = Flight.where(carrier: carrier_name).pluck(:dest_city_market, :origin_city_market).uniq
     markets.flatten!.uniq!
@@ -62,5 +72,7 @@ class Flight < ActiveRecord::Base
   def self.mean(array)
     array.inject(0) { |sum, x| sum += x } / array.size.to_f
   end
+
+
 
 end
