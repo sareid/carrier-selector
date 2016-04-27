@@ -19,6 +19,7 @@
 //= require jquery.tablesorter
 //= require d3.tip.v0.6.3
 //= require jquery.readyselector
+//= require compare_maps
 //= require_tree .
 
 $(document).ready(function()
