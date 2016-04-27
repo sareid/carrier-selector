@@ -1,0 +1,57 @@
+<section>
+  <div class="container" id="step2">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Step 2: Selecting the relevant data</h2>
+            <hr class="primary">
+            <p></p>
+        </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 text-center">
+        <div class="service-box">
+          <i class="fa fa-4x  fa-apple text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+          <h3>Home is king</h3>
+          <p class="text-muted">For this exercise, let's assume your company is based in New York City. Given this, it makes sense to only examine those flights with an origin or destination of the NYC Metropolitan area.</p>
+          <br>
+          <p class="text-muted">Applying this criteria, roughly 89% of the flights in the dataset can be disregarded. This reduces the number of flights to consider to 167,716.</p>
+          <br>
+          <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#nycmodal">
+            Learn more
+          </button>
+          <br>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <div class="service-box">
+          <i class="fa fa-4x fa-bolt text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+          <h3>Ignore the uncontrollable</h3>
+          <p class="text-muted">Flights are often delayed or cancelled because of factors outside the control of the carriers. These factors are tracked in the dataset, and include bad weather, airport security, and National Air System considerations.</p>
+          <br>
+          <p class="text-muted">For this analysis, it can be assumed that these factors affect all carriers equally and, as such, can be ignored.</p>
+          <br>
+          <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#control">
+            Learn more
+          </button>
+          <br>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <div class="service-box">
+          <i class="fa fa-4x fa-calendar text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+          <h3>Short timeframe</h3>
+          <p class="text-muted">The dataset of flights only covers 3 months. As such, a number of time-sensitive considerations were ignored, including whether a carrier performed better across seasons.</p>
+          <br>
+          <p class="text-muted">Similarly, this assessment assumes that three months is too short a period to assess whether any carrier is demonstrating sustainable trends in improving its performance.</p>
+          <br>
+          <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#time">
+            Learn more
+          </button>
+        </div>
+    </div>
+  </div>
+</section>

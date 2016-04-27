@@ -492,3 +492,49 @@ body {
 #white-links a:visited{ color:#fff; }
 #white-links a:hover{ color:#fff; }
 #white-links a:active{ color:#fff}
+
+.modal-body p {
+  font-size: 14px;
+}
+
+p + ul {
+    margin-top: -10px;
+}
+
+.states {
+  fill: #ccc;
+  stroke: #fff;
+}
+
+.symbol {
+  fill: #f05f40;
+  fill-opacity: .8;
+  stroke: #fff;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

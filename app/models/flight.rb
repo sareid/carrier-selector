@@ -21,18 +21,9 @@ class Flight < ActiveRecord::Base
     properties[:mean_ground_time_cancelled_flights] = Flight.mean_ground_time_cancelled_flights(name)
     properties[:num_delayed_flights] = Flight.num_delayed_flights(name)
     properties[:mean_delay_time] = Flight.mean_delay_time(name)
+    properties[:standard_deviation] = Flight.standard_deviation(name)
     properties
   end
-
-  # def self.flights_per_carrier_data
-
-  #   data = {}
-
-  #   Carrier.all.map do |carrier|
-
-  #   end
-
-  # end
 
   def self.show_city_markets(carrier_name)
     markets = Flight.where(carrier: carrier_name).pluck(:dest_city_market, :origin_city_market).uniq
@@ -71,6 +62,15 @@ class Flight < ActiveRecord::Base
 
   def self.mean(array)
     array.inject(0) { |sum, x| sum += x } / array.size.to_f
+  end
+
+  def self.standard_deviation(carrier_name)
+    delays = Flight.delayed_flights(carrier_name)
+    deviances = delays.map do |delay|
+      delay * delay
+    end
+    mean = Flight.mean(deviances)
+    Math.sqrt(mean).round(2)
   end
 
   def self.flights_per_carrier_chart_data

@@ -16,5 +16,13 @@
 //= require wow.min
 //= require creative
 //= require cbpAnimatedHeader
+//= require jquery.tablesorter
+//= require jquery.readyselector
+//= require d3
 //= require_tree .
 
+$(document).ready(function()
+    {
+        $("#carrierTable").tablesorter();
+    }
+);

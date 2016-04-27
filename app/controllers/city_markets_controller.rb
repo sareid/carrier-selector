@@ -1,0 +1,5 @@
+class CityMarketsController < ApplicationController
+
+
+
+end

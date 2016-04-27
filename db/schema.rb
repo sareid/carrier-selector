@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402111139) do
+ActiveRecord::Schema.define(version: 20160423194857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160402111139) do
     t.datetime "updated_at",                                         null: false
     t.string   "colour"
     t.boolean  "analyzed",                           default: false
+    t.float    "standard_deviation"
   end
 
   create_table "city_markets", force: :cascade do |t|
@@ -34,6 +35,8 @@ ActiveRecord::Schema.define(version: 20160402111139) do
     t.integer "target_geo_id_2"
     t.string  "name"
     t.integer "population"
+    t.float   "latitude"
+    t.float   "longitude"
   end
 
   create_table "flights", force: :cascade do |t|

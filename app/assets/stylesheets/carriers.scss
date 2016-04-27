@@ -1,3 +1,20 @@
 // Place all the styles related to the Carriers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+th.header {
+    background-image: image-url("bg.gif");
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    padding-left: 20px;
+    margin-left: -1px
+}
+
+th.headerSortUp {
+    background-image: image-url("asc.gif");
+}
+
+th.headerSortDown {
+    background-image: image-url("desc.gif");
+}

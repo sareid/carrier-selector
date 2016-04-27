@@ -5,6 +5,8 @@ class CreateCityMarkets < ActiveRecord::Migration
       t.integer :target_geo_id_2
       t.string :name
       t.integer :population
+      t.float :latitude
+      t.float :longitude
 
     end
   end

@@ -43,4 +43,31 @@ class Carrier < ActiveRecord::Base
 
   end
 
+  def self.assign_city_markets(carrier)
+    data = {
+      "type" => "FeatureCollection",
+      "features" => []
+    }
+    cities = Flight.show_city_markets(carrier.name)
+    cities.each do |city|
+      city_market = CityMarket.find_by(name: city)
+      if city_market
+        city_data = {
+          "type": "Feature",
+          "id": city_market[:id].to_s,
+          "geometry": {
+            "type": "Point",
+            "coordinates":[-(city_market[:longitude]), city_market[:latitude]]
+          },
+          "properties": {
+            "name": city_market[:name],
+            "population": city_market[:population]
+          }
+        }
+        data["features"] << city_data
+      end
+    end
+    data
+  end
+
 end

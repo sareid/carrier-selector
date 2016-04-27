@@ -1,0 +1,60 @@
+<!-- Modal -->
+<div class="modal fade" id="nycmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New York is king</h4>
+      </div>
+      <div class="modal-body">
+        <p>This analysis only looked at flights to and from the NYC Metropolitan Area. It took the assumption that a company would be concerned with the flights to and from its headquarters. New York City was chosen as the location for these headquarters as a major metropolitan area with numerous airports and flights.
+        </p>
+        <p>To select these flights from the dataset, the OriginCityMarket and DestCityMarket fields were examined to find flights where the value was the NYC Metropolitan Area.</p>
+        <p>This analysis is unable to account for delays that might occur on the subsequent parts of multi-leg journeys. It is safe to assume that the majority of travel undertaken by the company in the USA will be non-stop trips.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="control" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ignore the uncontrollable</h4>
+      </div>
+      <div class="modal-body">
+        <p>The following fields were deemed to be entirely beyond the control of the carriers, and therefore not pertinent to this analysis:</p>
+        <ul>
+          <li>Delays from the National Air System (NASDelay)</li>
+          <li>Delays from airport security issues (SecurityDelay)</li>
+        </ul>
+        <p>Along the same lines, cancelled flights were filtered to exclude from consideration those with the following  codes:</p>
+        <ul>
+          <li>Weather</li>
+          <li>National Air System</li>
+        </ul>
+        <p>Additionally, the LateAircraftDelay field was dropped as well. This delay indicates that the plane was delayed because of delays in its previous flight. The dataset does not keep track of the reason for this delay, and as such it is impossible to determine whether it was the fault of the carrier or not.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="time" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Bigger is better</h4>
+      </div>
+      <div class="modal-body">
+        <p>The following fields were not considered in this analysis:</p>
+        <ul>
+          <li>Year</li>
+          <li>Quarter</li>
+        </ul>
+        <p>These fields were removed from the dataset to improve performance when querying the database.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@
           <div class="col-lg-8 col-lg-offset-2 text-center">
             <h2 class="section-heading">Hypothesis</h2>
             <hr class="light">
-            <p class="text-faded">Based on the dataset provided, it would appear as if CKM Advisors should consider Delta Air Lines as its primary carrier. This reflects both the high number of flights operated by Delta Airlines, its service to 36 metropolitan areas, and the comparatively low frequency of delayed and cancelled flights. Specific figures for this can be seen in the comparison below, as well as on the <%= link_to "the more in depth carrier comparison pages", carriers_path %></p>
+            <p class="text-faded">Based on the dataset provided, it would appear that Delta Air Lines is the best pick as a primary carrier. This reflects both the high number of flights operated by Delta Airlines, its service to 36 metropolitan areas, and the comparatively low frequency of delayed and cancelled flights. Specific figures for this can be seen in the comparison below, as well as on the <%= link_to "the more in depth carrier comparison pages", carriers_path %></p>
           </div>
       </div>
       <div class="row">
@@ -44,7 +44,7 @@
             <li>US Airways and Southwest Airlines had more flights and serviced more metropolitan areas than the carriers mentioned above, but still had far fewer flights and destinations in comparison to the remaining five to be a credible candidate for CKM's primary carrier</li>
           </ul>
           <p>For the remaining five carriers, comparisons were made using the information on delays and cancellations. The analysis focused on indicators deemed to be witin the carrier's control - eg: entries in the 'CarrierDelay' field. It was assumed that delays to weather, airport security, and National Air System factors applied equally to all carriers. Delays from late aircraft were also ignored, because it was impossible to determine whether this delay was the carrier's fault or not.<p>
-          <p>Pie charts were rendered for each carrier showing the breakdown of on-time, delayed, and cancelled flights, alongside bar charts visualizing the mean time for delays and time on the ground during cancellations. To account for the different total number of flights, the rate of delayed and cancelled flights per 1000 flights were calculated, as well as the total amount of time lost to delay per 1000 flights. Based on these statistics, Delta Air Lines was deemed to be the carrier that CKM Advisors should use as its primary carrier.</p>
+          <p>Pie charts were rendered for each carrier showing the breakdown of on-time, delayed, and cancelled flights, alongside bar charts visualizing the mean time for delays and time on the ground during cancellations. To account for the different total number of flights, the rate of delayed and cancelled flights per 1000 flights were calculated, as well as the total amount of time lost to delay per 1000 flights. Based on these statistics, Delta Air Lines was deemed to be the carrier with the best on time performance.</p>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
             <ul>
               <li>Price not taken into account: This would be a critical factor for any company looking to choose a primary carrier. It was not immediately apparent how the prices for these specific flights could be accounted for. Perhaps a process of scraping online prices along key routes to monitor mean prices over a period of time could provide some insights.</li>
               <li>Populations served: This analysis included the number of metropolitan areas served by each carrier as a factor in determining its viability as a primary carrier. It did not account for the populations of each metropolitan area - and it is possible that a carrier with a smaller number of metropolitan areas could in fact be serving a much larger population. A CityMarket model including Census Bureau population stats was begun, but was not implemented due to time constraints.</li>
-              <li>Daily variations: There may be days of the week that CKM Advisors employees are more likely to travel (e.g. Monday and Friday). With the data available delay and cancellation information could have been calculated on a daily basis to see if any airline was markedly better during these times. This was not integrated due to time constraints.</li>
+              <li>Daily variations: There may be days of the week that a company's employees are more likely to travel (e.g. Monday and Friday). With the data available delay and cancellation information could have been calculated on a daily basis to see if any airline was markedly better during these times. This was not integrated due to time constraints.</li>
             </ul>
           </div>
       </div>

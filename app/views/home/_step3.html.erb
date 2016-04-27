@@ -1,0 +1,40 @@
+<section>
+  <div class="container" id="step3">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 text-center">
+          <h2 class="section-heading">Step 3: Narrowing down the carriers</h2>
+          <hr class="primary">
+          <p>An examination of the dataset reveals large variations in the number of flights conducted by each carrier, as well as in the number of city markets that they service. In choosing a primary carrier, it can be assumed that a higher number of flights and a greater number of destinations are both favourable factors.</p>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-4 text-right">
+        <h3>Number of flights per carrier</h3>
+        <p>Examining the total number of flights per carrier reveals that 7 of the 14 carriers undertake the overwhelming majority of flight to and from the NYC Metropolitan Area.</p>
+        <p>This pie chart demonstrates the breakdown of total flights per carrier. With this in mind, none of the following carriers appear to service too few destinations: SkyWest Airlines Inc., Mesa Airlines Inc., Hawaiian Airlines Inc., Frontier Airlines Inc., Alaska Airlines Inc., AirTran Airways Corporation, and Virgin America.
+        <p>These 7 airlines are not further considered.</p>
+
+      </div>
+      <div class="col-lg-7 text-center">
+        <h3>167,716 flights</h3>
+        <%= pie_chart @total_flight_data, @total_flight_options%>
+      </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-4 text-center">
+        <%= chartjs_bar_chart @number_of_destinations %>
+      </div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-6 text-left">
+        <h3>Number of city markets served per carrier</h3>
+        <p>In addition to the number of flights per carrier, it was also important to know the number of city markets being serviced by each carrier. In choosing a primary carrier, a broad array of possible destinations is preferable. This bar chart show the number of city markets served by each carrier. </p>
+        <p>When combined with the fact that they also significantly fewer flights than the remaining carriers, Southest Airlines Co. and US Airways Inc. were also excluded from analysis.</p>
+      </div>
+    </div>
+  </div>
+</section>
