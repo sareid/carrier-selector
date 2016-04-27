@@ -1,41 +1,58 @@
-<div class="container">
+<div class="container" id="comparison">
   <div class="row">
     <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Quick comparison</h2>
-        <hr class="primary">
-      </div>
-      <div class="col-lg-12">
-        <table id="carrierTable" class="tablesorter table">
-        <thead>
-          <tr class="text-center">
-            <th>Name</th>
-            <th>Flights</th>
-            <th>Population served</th>
-            <th>Cancelled flight rate</th>
-            <th>Delayed flight rate</th>
-            <th>Mean delay time</th>
-            <th>Std dev</th>
-            <th>Delay per 1000 flights</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @carriers.each do |carrier| %>
-            <% if (carrier.analyzed == true) %>
-              <tr>
-                <td><%= carrier.name %></td>
-                <td><%= carrier.num_flights %></td>
-                <td><%= carrier.population %></td>
-                <td><%= ((carrier.num_cancelled_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
-                <td><%= ((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
-                <td><%= carrier.mean_delay_time.round(2) %> minutes</td>
-                <td><%= carrier.standard_deviation.round(2) %></td>
-                <td><%= (((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) * carrier.mean_delay_time.to_f).round(2) %> minutes</td>
-              </tr>
-            <% end %>
+      <h2 class="section-heading">Quick comparison</h2>
+      <hr class="primary">
+      <p>Click on a column header to rank the carriers by that column.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <table id="carrierTable" class="tablesorter table">
+      <thead>
+        <tr class="text-center">
+          <th>Name</th>
+          <th>Flights</th>
+          <th>Population served</th>
+          <th>Cancelled flight rate</th>
+          <th>Delayed flight rate</th>
+          <th>Mean delay time</th>
+          <th>Std dev</th>
+          <th>Delay per 1000 flights</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @carriers.each do |carrier| %>
+          <% if (carrier.analyzed == true) %>
+            <tr>
+              <td><%= carrier.name %></td>
+              <td><%= carrier.num_flights %></td>
+              <td><%= carrier.population %></td>
+              <td><%= ((carrier.num_cancelled_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
+              <td><%= ((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
+              <td><%= carrier.mean_delay_time.round(2) %> minutes</td>
+              <td><%= carrier.standard_deviation.round(2) %></td>
+              <td><%= (((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) * carrier.mean_delay_time.to_f).round(2) %> minutes</td>
+            </tr>
           <% end %>
-        </tbody>
-        </table>
-      </div>
+        <% end %>
+      </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 text-center" id="metro-compare">
+      <br>
+      <h2 class="section-heading">City markets served</h2>
+      <hr class="primary">
+      <p>Click on a carrier to see a map of the city markets it serves.</p>
+      <p>
+        <% @carriers.each do |carrier| %>
+          <% if (carrier.analyzed == true) %>
+            <a href="" class="carrier-map" <%= "data-params-id=#{carrier.id}" %>><%= carrier.name %></a> |
+          <% end %>
+        <% end %>
+      <p>
     </div>
   </div>
 </div>
