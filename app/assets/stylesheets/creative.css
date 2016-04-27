@@ -538,3 +538,7 @@ p + ul {
   top: 100%;
   left: 0;
 }
+
+#comparison {
+  margin-top: -70px;
+}
