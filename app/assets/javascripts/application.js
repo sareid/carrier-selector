@@ -17,8 +17,8 @@
 //= require creative
 //= require cbpAnimatedHeader
 //= require jquery.tablesorter
-//= require jquery.readyselector
 //= require d3.tip.v0.6.3
+//= require jquery.readyselector
 //= require_tree .
 
 $(document).ready(function()
