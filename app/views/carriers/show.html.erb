@@ -5,10 +5,10 @@
               <h2 class="section-heading"><%= @carrier.name %></h2>
               <hr class="light">
 
-              <p class="text-faded">Total number of flights: <%= @carrier.num_flights %> </p>
-              <p class="text-faded">Number of cancelled flights: <%= @carrier.num_cancelled_flights %> | Cancellation rate: <%= ((@carrier.num_cancelled_flights.to_f / @carrier.num_flights.to_f) * 1000).round(2) %> times per 1000 flights</p>
-              <p class="text-faded">Number of delayed flights: <%= @carrier.num_delayed_flights %> | Delayed rate: <%= ((@carrier.num_delayed_flights.to_f / @carrier.num_flights.to_f) * 1000).round(2) %> times per 1000 flights</p>
-              <p class="text-faded">Number of metropolitan areas served: <%= @metros.length %></p>
+              <p class="text-faded">Total number of flights: <%= number_with_delimiter(@carrier.num_flights, :delimiter => ',') %> </p>
+              <p class="text-faded">Number of cancelled flights: <%= number_with_delimiter(@carrier.num_cancelled_flights, :delimiter => ',') %> | Cancellation rate: <%= ((@carrier.num_cancelled_flights.to_f / @carrier.num_flights.to_f) * 1000).round(2) %> times per 1000 flights</p>
+              <p class="text-faded">Number of delayed flights: <%= number_with_delimiter(@carrier.num_delayed_flights, :delimiter => ',') %> | Delayed rate: <%= ((@carrier.num_delayed_flights.to_f / @carrier.num_flights.to_f) * 1000).round(2) %> times per 1000 flights</p>
+              <p class="text-faded">Number of metropolitan areas served: <%= @metros.length %> | Total population served: <%= number_with_delimiter(@carrier.population, :delimiter => ',') %></p>
           </div>
       </div>
   </div>
@@ -22,14 +22,14 @@
         <%= chartjs_pie_chart @flight_breakdown_data %>
       </div>
       <div class="col-lg-5 text-center">
-        <h3>Mean times of delays and cancellations</h3>
+        <h3>Mean times of delays and cancellations (minutes)</h3>
         <%= chartjs_bar_chart @flight_delay_data %>
       </div>
       <div class="col-lg-2"></div>
     </div>
     <div class="row">
       <div class="col-lg-12 text-center" id="metro-map" <%= "data-params-id=#{params[:id]}" if params.has_key?(:id) %>>
-        <h3>Metropolitan areas served</h3>
+        <h3>Metropolitan areas served: <%= @metros.length %> | Population served: <%= number_with_delimiter(@carrier.population, :delimiter => ',') %></h3>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423194857) do
+ActiveRecord::Schema.define(version: 20160427144819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160423194857) do
     t.string   "colour"
     t.boolean  "analyzed",                           default: false
     t.float    "standard_deviation"
+    t.integer  "population"
   end
 
   create_table "city_markets", force: :cascade do |t|

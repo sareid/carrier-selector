@@ -2,6 +2,7 @@ class Carrier < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def num_delayed_flights_data
+
     data = [
       {
           value: (self.num_flights - (self.num_cancelled_flights + self.num_delayed_flights)),
@@ -27,7 +28,7 @@ class Carrier < ActiveRecord::Base
 
   def delay_time_data
     data = {
-    labels: ["Mean delay time", "Mean ground time for cancelled flight"],
+    labels: ["Delays", "Cancellations"],
     datasets: [
         {
             label: "Mean delay and cancellation times",
@@ -35,7 +36,7 @@ class Carrier < ActiveRecord::Base
             strokeColor: "rgba(240,95,64,0.8)",
             highlightFill: "rgba(240,95,64,0.75)",
             highlightStroke: "rgba(240,95,64,1)",
-            data: [self.mean_delay_time, self.mean_ground_time_cancelled_flights]
+            data: [self.mean_delay_time.round(2), self.mean_ground_time_cancelled_flights.round(2)]
         },
 
     ]
@@ -68,6 +69,22 @@ class Carrier < ActiveRecord::Base
       end
     end
     data
+  end
+
+  def self.assign_populations
+    carriers = Carrier.all
+    carriers.each do |carrier|
+      pop = 0
+      cities = Flight.show_city_markets(carrier.name)
+      cities.each do |city|
+        city_market = CityMarket.find_by(name: city)
+        if city_market
+          pop += city_market[:population]
+        end
+      end
+      carrier[:population] = pop
+      carrier.save
+    end
   end
 
 end

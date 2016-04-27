@@ -10,10 +10,11 @@
           <tr class="text-center">
             <th>Name</th>
             <th>Flights</th>
+            <th>Population served</th>
             <th>Cancelled flight rate</th>
             <th>Delayed flight rate</th>
             <th>Mean delay time</th>
-            <th>Standard deviation</th>
+            <th>Std dev</th>
             <th>Delay per 1000 flights</th>
           </tr>
         </thead>
@@ -23,6 +24,7 @@
               <tr>
                 <td><%= carrier.name %></td>
                 <td><%= carrier.num_flights %></td>
+                <td><%= carrier.population %></td>
                 <td><%= ((carrier.num_cancelled_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
                 <td><%= ((carrier.num_delayed_flights.to_f / carrier.num_flights.to_f) * 1000).round(2) %> times per 1000</td>
                 <td><%= carrier.mean_delay_time.round(2) %> minutes</td>
